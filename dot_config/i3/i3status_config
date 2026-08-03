@@ -1,0 +1,23 @@
+general {
+  output_format = "i3bar"
+  colors = true
+  interval = 5
+}
+
+order += "ethernet enp15s0"
+order += memory
+order += "tztime local"
+
+ethernet enp15s0 {
+  format_up = "E: %ip (%speed)"
+  format_down = "E: down"
+}
+
+memory {
+  format = "MEM: %used / %total (%percentage_used used)"
+}
+
+tztime local {
+  format = "%Y/%m/%d %H:%M:%S"
+  # hide_if_equals_localtime = true
+}

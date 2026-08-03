@@ -1,0 +1,178 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "auto",
+    "source": "$(ls ~/.config/fastfetch/logo/images/*.png | shuf -n 1)",
+    "height": 20,
+    "width": 40,
+    "padding": {
+      "top": 5,
+      "left": 3
+    }
+  },
+  "display": {
+    "separator": "", // Separator between keys and values
+    "color": {
+      "keys": "blue", // Key color
+      "title": "red" // Title color
+    },
+    "key": {
+      "width": 12, // Aligns keys to this width
+      "type": "string" // string, icon, both, or none
+    },
+    "bar": {
+      "width": 10, // Width of percentage bars
+      "char": {
+        "elapsed": "■", // Character for elapsed portion
+        "total": "-" // Character for total portion
+      }
+    },
+    "percent": {
+      "type": 9,
+      "ndigits": 1,
+      "color": {
+        "green": "light_blue",
+        "yellow": "yellow",
+        "red": "light_red"
+      }
+    },
+    "size": {
+      "binaryPrefix": "jedec"
+    }
+  },
+  "modules": [
+    "break",
+    {
+      "type": "custom",
+      "format": "{##FFE1E1}┌──────────────────────Hardware──────────────────────┐"
+    },
+    {
+      "type": "custom",
+      "key": "{##FFDCDC} Core Components"
+    },
+    {
+      "type": "host",
+      "key": "{##FFDCDC}│  MBD",
+      "format": "{name}"
+    },
+    {
+      "type": "cpu",
+      "key": "{##FFD7D7}│  CPU",
+      "format": "{name} {##AFAFAF}@ {##FF6E6E}{freq-max}{#reset_white}"
+    },
+    {
+      "type": "gpu",
+      "key": "{##FFD2D2}│ 󰍛 GPU",
+      "format": "{vendor} {name}"
+    },
+    {
+      "type": "memory",
+      "key": "{##FFCDCD}│  RAM",
+      "format": "{##AFAFAF}{used}{##FFDB14} / {#reset_white}{total} ({percentage})"
+    },
+    "break",
+    {
+      "type": "custom",
+      "key": "{##FFC8C8} Disks & Partitions"
+    },
+    {
+      "type": "disk",
+      "showRegular": true,
+      "showExternal": true,
+      "key": "{##FFC3C3}│  {mountpoint:-5}",
+      "keyColor": "",
+      "format": "{filesystem>6} {size-percentage>8}  {##AFAFAF}{size-used>10} {##FFDB14}/{#reset_white} {size-total}"
+    },
+    "break",
+    {
+      "type": "custom",
+      "key": "{##FFB4B4}󰍹 Displays"
+    },
+    {
+      "type": "display",
+      "key": "{##FFAAAA}│ 󰍹 DP{}",
+      "format": "{?is-primary}{##FF6E6E}{name<8}{#reset_white}{?}{/is-primary}{name<8}{/} {##AFAFAF}{inch}\"{#reset_white} {width}x{height} {##FFDB14}@{#reset_white} x{scale-factor}, {refresh-rate} Hz"
+    },
+    {
+      "type": "custom",
+      "format": "{##FFA5A5}└────────────────────────────────────────────────────┘"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "{##FFA0A0}┌──────────────────────Software──────────────────────┐"
+    },
+    {
+      "type": "os",
+      "key": "{##FF9B9B}󰣇 OS"
+    },
+    {
+      "type": "kernel",
+      "key": "{##FF9696}│  Kernel"
+    },
+    {
+      "type": "bios",
+      "key": "{##FF9191}│  BIOS"
+    },
+    {
+      "type": "packages",
+      "key": "{##FF8C8C}│ 󰏖 PM"
+    },
+    {
+      "type": "shell",
+      "key": "{##FF8787}│  SH"
+    },
+    "break",
+    {
+      "type": "de",
+      "key": "{##FF8282} DE"
+    },
+    {
+      "type": "lm",
+      "key": "{##FF7D7D}│  DM"
+    },
+    {
+      "type": "wm",
+      "key": "{##FF7878}│  WM"
+    },
+    {
+      "type": "wmtheme",
+      "key": "{##FF7373}│ 󰉼 Theme"
+    },
+    {
+      "type": "terminal",
+      "key": "{##FF6E6E}│  TM"
+    },
+    {
+      "type": "custom",
+      "format": "{##FF6969}└────────────────────────────────────────────────────┘"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "{##FF6464}┌────────────────────────Misc────────────────────────┐"
+    },
+    {
+      "type": "command",
+      "key": "{##FF5F5F}  OS Age ",
+      "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
+    },
+    {
+      "type": "uptime",
+      "key": "{##FF5A5A}  Uptime "
+    },
+    {
+      "type": "datetime",
+      "key": "{##FF5555}  DateTime "
+    },
+    {
+      "type": "custom",
+      "format": "{##FF5050}└────────────────────────────────────────────────────┘"
+    },
+    {
+      "type": "colors",
+      "paddingLeft": 2,
+      "symbol": "circle"
+    }
+  ]
+}

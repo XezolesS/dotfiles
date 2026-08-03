@@ -1,0 +1,55 @@
+#-------------------------#
+# User system environment #
+#-------------------------#
+# ---- XDG base directories ---- #
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+# ---- EDITOR ---- #
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  # In remote session
+  export EDITOR='vim'
+  export VISUAL='vim'
+else
+  # In local session
+  export EDITOR='nvim'
+  export VISUAL='nvim'
+fi
+
+# ---- GPG ---- #
+export GPG_TTY=$(tty)
+
+# ---- PATH ---- #
+# Local system binaries
+if [[ -d "/usr/local/bin" ]] && [[ "$PATH" != *"/usr/local/bin"* ]]; then
+  export PATH="/usr/local/bin:$PATH"
+fi
+
+# Local home binaries
+if [[ -d "$HOME/.local/bin" ]] && [[ "$PATH" != *"$HOME/.local/bin"* ]]; then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+
+# Rust, local cargo binaries
+if [[ -d "$HOME/.cargo/bin" ]] && [[ "$PATH" != *"$HOME/.cargo/bin"* ]]; then
+  export PATH="$PATH:$HOME/.cargo/bin"
+fi
+
+# ---- LANG ---- #
+export LANG=en_US.UTF-8
+
+# ---- Oh My Zsh ---- #
+# Path where Oh My Zsh is installed
+export ZSH="$HOME/.config/zsh/.oh-my-zsh"
+
+# Oh My Zsh cache directory
+export ZSH_CACHE_DIR="$ZSH/cache"
+
+# Change .zcompdump file directory to $ZSH_CACHE_DIR
+export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
+
+# Change Oh My Zsh custom directory
+export ZSH_CUSTOM="$HOME/.config/zsh"

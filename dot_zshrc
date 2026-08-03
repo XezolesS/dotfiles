@@ -1,0 +1,73 @@
+#--------------------------#
+# Oh My Zsh configurations #
+#--------------------------#
+# ---- Main settings ----
+ZSH_THEME="xezoless"
+
+plugins=(
+  # Integrated
+  chezmoi
+  eza
+  fzf
+  git
+  kitty
+  ssh
+  vi-mode
+  zoxide
+  zsh-interactive-cd
+
+  # Custom
+  cppwd
+  fastfetch
+)
+
+# ---- Update settings ----
+# Remind to update Oh My Zsh after 7 days from the last update
+zstyle ":omz:update" mode reminder
+zstyle ":omz:update" frequency 7
+
+# ---- Completion settings ----
+ZSH_DISABLE_COMPFIX="false"
+COMPLETION_WAITING_DOTS="true"
+CASE_SENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
+
+# ---- Automatic title settings ----
+DISABLE_AUTO_TITLE="true"
+
+# ---- Library settings ----
+DISABLE_MAGIC_FUNCTIONS="false"
+DISABLE_LS_COLORS="false"
+ENABLE_CORRECTION="false"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+HIST_STAMPS="yyyy-mm-dd"
+
+# ---- Plugin settings: eza ---- #
+zstyle ":omz:plugins:eza" "dirs-first" no
+zstyle ":omz:plugins:eza" "git-status" no
+zstyle ":omz:plugins:eza" "header" no
+zstyle ":omz:plugins:eza" "show-group" yes
+zstyle ":omz:plugins:eza" "icons" yes
+zstyle ":omz:plugins:eza" "color-scale" size
+zstyle ":omz:plugins:eza" "color-scale-mode" gradient
+zstyle ":omz:plugins:eza" "size-prefix" si
+zstyle ":omz:plugins:eza" "time-style" $TIME_STYLE
+zstyle ":omz:plugins:eza" "hyperlink" auto
+
+# ---- Plugin settings: vi-mode ---- #
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE="true"
+VI_MODE_SET_CURSOR="true"
+
+source $ZSH/oh-my-zsh.sh
+
+#---------------------#
+# User configurations #
+#---------------------#
+setopt AUTOCD
+setopt NOBEEP
+
+#-----------------#
+# Startup scripts #
+#-----------------#
+# Luanch fastfetch
+fastfetch

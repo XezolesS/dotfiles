@@ -1,0 +1,89 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "$(ls ~/.config/fastfetch/logo/texts/*.txt | shuf -n 1)",
+    "height": 12,
+    "width": 24,
+    "padding": {
+      "left": 1,
+      "top": 1,
+      "bottom": 1,
+      "right": 1
+    }
+  },
+  "display": {
+    "separator": "", // Separator between keys and values
+    "color": {
+      "keys": "blue", // Key color
+      "title": "red" // Title color
+    },
+    "key": {
+      "width": 15, // Aligns keys to this width
+      "type": "string" // string, icon, both, or none
+    },
+    "bar": {
+      "width": 10, // Width of percentage bars
+      "char": {
+        "elapsed": "■", // Character for elapsed portion
+        "total": "-" // Character for total portion
+      }
+    },
+    "percent": {
+      "type": 9,
+      "ndigits": 1,
+      "color": {
+        "green": "light_blue",
+        "yellow": "yellow",
+        "red": "light_red"
+      }
+    },
+    "size": {
+      "binaryPrefix": "jedec"
+    }
+  },
+  "modules": [
+    "break",
+    "break",
+    {
+      "type": "cpu",
+      "key": "{##FFE1E1} CPU       │",
+      "format": "{name} {##AFAFAF}@ {##FF6E6E}{freq-max}{#reset_white}"
+    },
+    {
+      "type": "gpu",
+      "key": "{##FFCDCD}󰍛 GPU       │",
+      "format": "{vendor} {name}"
+    },
+    {
+      "type": "memory",
+      "key": "{##FFB9B9} RAM       │",
+      "format": "{##AFAFAF}{used}{##FFDB14} / {#reset_white}{total} ({percentage})"
+    },
+    {
+      "type": "os",
+      "key": "{##FFA5A5}󰣇 OS        │"
+    },
+    {
+      "type": "kernel",
+      "key": "{##FF9191} Kernel    │"
+    },
+    {
+      "type": "terminal",
+      "key": "{##FF7D7D} TM        │"
+    },
+    {
+      "type": "uptime",
+      "key": "{##FF6969}󱨒 Uptime    │"
+    },
+    {
+      "type": "datetime",
+      "key": "{##FF5555} DateTime  │"
+    },
+    {
+      "type": "colors",
+      "paddingLeft": 2,
+      "symbol": "circle"
+    }
+  ]
+}
