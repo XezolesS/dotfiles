@@ -1,0 +1,22 @@
+[Unit]
+Description=Docker containerized SRS service.
+Requires=docker.service
+After=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+
+ExecStartPre=-/usr/bin/docker stop container-systemd-srs
+ExecStartPre=-/usr/bin/docker rm container-systemd-srs
+ExecStart=docker run --rm --name container-systemd-srs \
+    -p 1935:1935 -p 1985:1985 -p 8080:8080 \
+    -p 8000:8000/udp -p 10080:10080/udp \
+    -e SRS_LOG_LEVEL=warn \
+    -e SRS_LOG_LEVEL_V2=warn \
+    ossrs/srs:6
+ExecStop=/usr/bin/docker stop container-systemd-srs
+ExecStopPost=/usr/bin/docker rm -f container-systemd-srs
+
+[Install]
+WantedBy=default.target

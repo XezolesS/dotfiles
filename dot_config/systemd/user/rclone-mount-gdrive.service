@@ -1,0 +1,15 @@
+[Unit]
+Description=Mount Google Drive using rclone (tndid7876@gmail.com)
+Documentation=man:rclone(1)
+After=network-online.target
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/rclone mount --vfs-cache-mode full --vfs-cache-max-size 2G gdrive: /mnt/GoogleDrive/tndid7876@gmail.com
+ExecStop=/bin/fusermount -u /mnt/GoogleDrive/tndid7876@gmail.com
+Restart=always
+RestartSec=10
+TimeoutStopSec=60
+
+[Install]
+WantedBy=default.target
