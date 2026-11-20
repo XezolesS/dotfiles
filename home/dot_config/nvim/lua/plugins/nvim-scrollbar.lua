@@ -10,60 +10,71 @@ return {
       "lewis6991/gitsigns.nvim",
     },
     opts = {
-      show = true,
-      show_in_active_only = true,
-      set_highlights = true,
-      handle = {
-        text = " ",
-        color = colors.selection,
-        hide_if_all_visible = true,
-      },
-      marks = {
-        Cursor = {
-          color = colors.bright_blue,
-        },
-        Search = {
-          color = colors.orange,
-        },
-        Error = {
-          color = colors.error,
-        },
-        Warn = {
-          color = colors.warning,
-        },
-        Info = {
-          color = colors.info,
-        },
-        Hint = {
-          color = colors.hint,
-        },
-        Misc = {
-          color = colors.bright_cyan,
-        },
-        GitAdd = {
-          color = colors.git.add,
-        },
-        GitChanges = {
-          color = colors.git.change,
-        },
-        GitDelete = {
-          color = colors.git.delete,
-        },
-      },
-      excluded_filetypes = {
-        "snacks_input",
-        "snacks_picker_input",
-        "snacks_picker_list",
-
-        "codecompanion",
-      },
-      handlers = {
+      providers = {
+        ale = false,
         cursor = true,
         diagnostic = true,
         gitsigns = true,
-        handle = true,
+        lsp_semantic_tokens = true,
         search = true,
-        ale = false,
+      },
+      scrollbar = {
+        visibility = "active",
+        thumb = {
+          text = " ",
+          highlight = { bg = colors.selection },
+          hide_if_all_visible = true,
+        },
+      },
+      minimap = {
+        enabled = true,
+      },
+      marks = {
+        Cursor = {
+          highlight = { fg = colors.bright_blue },
+        },
+        Search = {
+          highlight = { fg = colors.orange },
+        },
+        Error = {
+          highlight = { fg = colors.error },
+        },
+        Warn = {
+          highlight = { fg = colors.warning },
+        },
+        Info = {
+          highlight = { fg = colors.info },
+        },
+        Hint = {
+          highlight = { fg = colors.hint },
+        },
+        Misc = {
+          highlight = { fg = colors.bright_cyan },
+        },
+        GitAdd = {
+          text = { "┃" },
+          priority = 7,
+          highlight = { fg = colors.git.add },
+        },
+        GitChanges = {
+          text = { "┃" },
+          priority = 7,
+          highlight = { fg = colors.git.change },
+        },
+        GitDelete = {
+          text = { "▁" },
+          priority = 7,
+          highlight = { fg = colors.git.delete },
+        },
+      },
+      exclude = {
+        filetypes = {
+          snacks_input = true,
+          snacks_picker_input = true,
+          snacks_picker_list = true,
+
+          codecompanion = true,
+        },
       },
     },
   },
