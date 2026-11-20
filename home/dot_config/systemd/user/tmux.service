@@ -4,9 +4,7 @@ Documentation=man:tmux(1)
 
 [Service]
 Type=forking
-Environment=WAYLAND_DISPLAY=wayland-0
-Environment=DISPLAY=:0
-ExecStart=/usr/bin/tmux new-session -d
+ExecStart=/bin/sh -c "export WAYLAND_DISPLAY=$(ls '$XDG_RUNTIME_DIR/wayland-*' 2>/dev/null | grep -v '\.lock$' | sed 's#.*/##' | tail -n1); export DISPLAY=:0; exec /usr/bin/tmux new-session -d""
 
 ExecStop=/home/xezoless/.config/tmux/plugins/tmux-resurrect/scripts/save.sh
 ExecStop=/usr/bin/tmux kill-server
