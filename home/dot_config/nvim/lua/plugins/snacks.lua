@@ -10,7 +10,14 @@ return {
     opts = {
       -- enabled
       explorer = { enabled = true },
-      image = { enabled = true },
+      image = {
+        enabled = true,
+        doc = {
+          enabled = true,
+          inline = false,
+          float = true,
+        },
+      },
       notifier = { enabled = true, timeout = 3000, style = "fancy", refresh = 10 },
       picker = { enabled = true },
 
